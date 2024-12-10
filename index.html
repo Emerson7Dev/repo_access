@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG Interface</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #343a40;
+  color: #fff;
+  width: 25%;
+  padding: 20px;
+}
+
+.sidebar .checkbox-button {
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.sidebar .checkbox-button input[type="checkbox"] {
+  display: none;
+}
+
+.sidebar .checkbox-button label {
+  padding: 10px;
+  background-color: #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar .checkbox-button input[type="checkbox"]:checked + label {
+  background-color: #32527d;
+}
+
+.sidebar .precisionButton button {
+  width: calc(50% - 10px);
+  padding: 10px;
+  margin: 5px;
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar .precisionButton button:hover {
+  background-color: #545b64;
+}
+
+.sidebar .radio-button {
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.sidebar .radio-button input[type="radio"] {
+  display: none;
+}
+
+.sidebar .radio-button label {
+  padding: 10px;
+  background-color: #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar .radio-button input[type="radio"]:checked + label {
+  background-color: #32527d;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.chat {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#inputMessage {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#sendButton {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#sendButton:hover {
+  background-color: #0056b3;
+}
+
+#chatHistory {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 300px;
+  overflow-y: auto;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <h2>Coleções de Documentos</h2>
+    <div class="checkbox-button">
+      <input type="checkbox" id="collection1" name="collection">
+      <label for="collection1">Coleção 1</label>
+    </div>
+    <div class="checkbox-button">
+      <input type="checkbox" id="collection2" name="collection">
+      <label for="collection2">Coleção 2</label>
+    </div>
+    <div class="checkbox-button">
+      <input type="checkbox" id="collection3" name="collection">
+      <label for="collection3">Coleção 3</label>
+    </div>
+    <h2>Qualidade da Resposta</h2>
+    <div class="radio-button">
+      <input type="radio" id="fastMode" name="mode">
+      <label for="fastMode">Mais Rápido</label>
+    </div>
+    <div class="radio-button">
+      <input type="radio" id="accurateMode" name="mode">
+      <label for="accurateMode">Mais Preciso</label>
+    </div>
+  </div>
+  <div class="main">
+    <div class="chat">
+      <h2>Pergunte à IA da SAJ</h2>
+      <textarea id="inputMessage" placeholder="Digite sua pergunta aqui..."></textarea>
+      <button id="sendButton">Enviar</button>
+      <div id="chatHistory"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
